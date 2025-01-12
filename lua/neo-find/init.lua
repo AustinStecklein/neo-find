@@ -70,6 +70,11 @@ function find_dir(additional_args, path)
     if path == nil then
         path = "~"
     end 
+
+    if additional_args == nil then
+        additional_args = ""
+    end
+
     fzflua.files(
         { 
             prompt="Find Directory> ", 
@@ -83,6 +88,10 @@ function find_dir_and_search(additional_args, search_callback, path)
     if path == nil then
         path = "~"
     end 
+
+    if additional_args == nil then
+        additional_args = ""
+    end
 
     fzflua.files(
         { 

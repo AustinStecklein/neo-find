@@ -1,6 +1,7 @@
 -- FzfLua Extension for finding files easier
-local fzf_lua = require("fzf-lua")
+local fzflua = require("fzf-lua")
 local builtin = require("fzf-lua.previewer.builtin")
+local uv = vim.uv or vim.loop
 
 -- Inherit from the "buffer_or_file" previewer
 local LsPreviewer = builtin.buffer_or_file:extend()

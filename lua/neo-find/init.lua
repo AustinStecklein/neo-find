@@ -1,6 +1,7 @@
 -- FzfLua Extension for finding files easier
 local M = {}
 
+local fzflua = require("fzf-lua")
 local fzf_lua_extenstion = require("neo-find.core")
 
 function start_up_callback(additional_args, search_callback) 

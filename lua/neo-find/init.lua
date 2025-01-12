@@ -2,6 +2,7 @@
 local M = {}
 local fzflua = require("fzf-lua")
 local builtin = require("fzf-lua.previewer.builtin")
+local path = require("fzf-lua.path")
 local uv = vim.uv or vim.loop
 
 -- Inherit from the "buffer_or_file" previewer
@@ -12,6 +13,7 @@ function LsPreviewer:new(o, opts, fzf_win)
     setmetatable(self, LsPreviewer)
     return self
 end
+
 -- This was straight up taken from stack overflow
 function LsPreviewer:scandir(directory)
     local i, t, popen = 0, {}, io.popen
@@ -23,6 +25,7 @@ function LsPreviewer:scandir(directory)
     pfile:close()
     return t
 end
+
 function LsPreviewer:populate_preview_buf(entry_str)
     if entry_str == nil then 
         return
@@ -30,9 +33,7 @@ function LsPreviewer:populate_preview_buf(entry_str)
     local tmpbuf = self:get_tmp_buffer()
     vim.api.nvim_buf_set_lines(tmpbuf, 0, -1, false, self:scandir(entry_str))
     self:set_preview_buf(tmpbuf)
-    self.win:update_scrollbar()
 end
-
 
 function clean_file_path(selected, opts)
     -- this whole function straight up ripped out of actions.lua at the start of M.vimcmd_entry
@@ -99,6 +100,7 @@ function find_dir_and_search(additional_args, search_callback, path)
         }
     ) 
 end
+
 M.find_dir_and_search = find_dir_and_search
 M.find_dir = find_dir
 return M

@@ -84,7 +84,6 @@ function find_dir_and_search(additional_args, search_callback, path)
         path = "~"
     end 
 
-    print("find " .. path .. " -type d " .. additional_args)
     fzflua.files(
         { 
             prompt="Find Directory> ", 

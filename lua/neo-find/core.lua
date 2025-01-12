@@ -3,6 +3,7 @@ local builtin = require("fzf-lua.previewer.builtin")
 local path = require("fzf-lua.path")
 local uv = vim.uv or vim.loop
 
+local M = {}
 -- Inherit from the "buffer_or_file" previewer
 local LsPreviewer = builtin.buffer_or_file:extend()
 
@@ -48,4 +49,7 @@ function clean_file_path(selected, opts)
     return fullpath
 end
 
+
+M.clean_file_path = clean_file_path
+return M
 

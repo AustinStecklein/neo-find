@@ -1,4 +1,5 @@
 -- FzfLua Extension for finding files easier
+local M = {}
 local fzflua = require("fzf-lua")
 local builtin = require("fzf-lua.previewer.builtin")
 local uv = vim.uv or vim.loop
@@ -98,3 +99,6 @@ function find_dir_and_search(additional_args, search_callback, path)
         }
     ) 
 end
+M.find_dir_and_search = find_dir_and_search
+M.find_dir = find_dir
+return M
